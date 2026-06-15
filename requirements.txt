@@ -1,3 +1,1 @@
 # No external dependencies required; uses Python standard library
-# If you add third-party packages, list them here, e.g.:
-# flask==2.2.5
