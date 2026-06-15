@@ -1,0 +1,16 @@
+[
+    {
+        "user_id": "admin01",
+        "password_hash": "3b612c75a7b5048a435fb6ec81e52ff92d6d795a8b5a9c17070f6a63c97a53b2",
+        "role": "admin",
+        "locked": false,
+        "failed_attempts": 0
+    },
+    {
+        "user_id": "officer01",
+        "password_hash": "2fad6f7aa889bbc52b57e3ee95ab2a85f95eb165624d69f3d47f44e496f7174f",
+        "role": "officer",
+        "locked": false,
+        "failed_attempts": 0
+    }
+]
