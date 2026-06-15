@@ -9,64 +9,52 @@ from security import verify_password
 
 
 def find_user(user_id, users):
-    # Iterate through a list of user dicts and return the matching user
     for user in users:
         if user["user_id"] == user_id:
             return user
-
-    # No matching user found
     return None
 
 
 def login():
-    # Load persisted users
     users = load_users()
 
-    # Prompt for credentials
     user_id = input("Enter User ID: ").strip()
     password = input("Enter Password: ").strip()
 
-    # Basic input validation
     if not user_id or not password:
         print("User ID and password cannot be empty.")
         log_event("UNKNOWN", "LOGIN_FAILED_EMPTY_INPUT")
         return None
 
-    # Find the user record
     user = find_user(user_id, users)
 
     if user is None:
-        # Don't reveal whether the user exists to avoid user enumeration
         print("Invalid user ID or password.")
         log_event(user_id, "LOGIN_FAILED_USER_NOT_FOUND")
         return None
 
-    # Check if account is administratively locked
     if user.get("locked"):
         print("Account is locked. Contact admin.")
         log_event(user_id, "LOGIN_BLOCKED_ACCOUNT_LOCKED")
         return None
 
-    # Verify password hash
     if verify_password(password, user.get("password_hash", "")):
-        # Reset failed attempts on successful login
         user["failed_attempts"] = 0
         save_users(users)
         log_event(user_id, "LOGIN_SUCCESS")
         print(f"Welcome, {user['role']} {user_id}!")
         return user
+
+    user["failed_attempts"] = user.get("failed_attempts", 0) + 1
+
+    if user["failed_attempts"] >= 3:
+        user["locked"] = True
+        save_users(users)
+        log_event(user_id, "ACCOUNT_LOCKED")
+        print("Account locked after 3 failed attempts.")
     else:
-        # Increment failed attempts and lock account after threshold
-        user["failed_attempts"] = user.get("failed_attempts", 0) + 1
+        save_users(users)
+        print(f"Invalid password. Attempts left: {3 - user['failed_attempts']}")
 
-        if user["failed_attempts"] >= 3:
-            user["locked"] = True
-            save_users(users)
-            log_event(user_id, "ACCOUNT_LOCKED")
-            print("Account locked after 3 failed attempts.")
-        else:
-            save_users(users)
-            print(f"Invalid password. Attempts left: {3 - user['failed_attempts']}")
-
-        log_event(user_id, "LOGIN_FAILED_INVALID_PASSWORD")
-        return None
+    log_event(user_id, "LOGIN_FAILED_INVALID_PASSWORD")
+    return None

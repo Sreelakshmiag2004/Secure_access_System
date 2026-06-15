@@ -9,7 +9,7 @@ from menus import admin_menu, officer_menu
 
 
 def main():
-    # Main interactive loop
+    
     while True:
         print("\n===== Secure Access System =====")
 
@@ -25,7 +25,7 @@ def main():
             else:
                 print("Unknown role. Access denied.")
 
-        # Ask whether to continue the program
+        
         again = input("\nDo you want to continue? (yes/no): ").strip().lower()
         if again != "yes":
             print("Exiting system...")

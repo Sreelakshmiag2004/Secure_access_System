@@ -1,14 +1,20 @@
 [
-  {
-    "case_id": "C101",
-    "title": "Confidential Fraud Investigation",
-    "status": "Open",
-    "assigned_officer": "officer01"
-  },
-  {
-    "case_id": "C102",
-    "title": "Cyber Crime Tracking",
-    "status": "Closed",
-    "assigned_officer": "officer01"
-  }
+    {
+        "case_id": "C101",
+        "title": "Confidential Fraud Investigation",
+        "status": "Open",
+        "assigned_officer": "officer01"
+    },
+    {
+        "case_id": "C102",
+        "title": "Cyber Crime Tracking",
+        "status": "Closed",
+        "assigned_officer": "officer01"
+    },
+    {
+        "case_id": "C103",
+        "title": "SECURITY TRACKING",
+        "status": "Closed",
+        "assigned_officer": "officer01"
+    }
 ]
