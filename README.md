@@ -4,19 +4,19 @@ A Python 3 console-based system for secure login and role-based access to confid
 
 ## Features
 
-- Secure login with User ID and password. [file:1]
-- Passwords stored using hashing. [file:1]
-- Account locked after 3 failed login attempts. [file:1]
-- Only Admin can unlock locked accounts. [file:1]
-- Admin can view all case records. [file:1]
-- Officer can view only assigned case records. [file:1]
-- Audit logging for login attempts and Admin actions. [file:1]
-- Local file storage using `users.json`, `cases.json`, and `log.txt`. [file:1]
+- Secure login with User ID and password. 
+- Passwords stored using hashing. 
+- Account locked after 3 failed login attempts. 
+- Only Admin can unlock locked accounts. 
+- Admin can view all case records. 
+- Officer can view only assigned case records.
+- Audit logging for login attempts and Admin actions. 
+- Local file storage using `users.json`, `cases.json`, and `log.txt`. 
 
 ## Roles
 
-- **Admin**: manages users, views all case records, unlocks locked accounts, and views logs. [file:1]
-- **Officer**: logs in and views assigned case records only. [file:1]
+- **Admin**: manages users, views all case records, unlocks locked accounts, and views logs.
+- **Officer**: logs in and views assigned case records only. 
 
 ## Files
 
@@ -39,12 +39,12 @@ python main.py
 
 ## Data Storage
 
-- `users.json` stores user ID, password hash, role, lock status, and failed attempts. [file:1]
-- `cases.json` stores case ID, title, status, and assigned officer. [file:1]
-- `log.txt` stores timestamp, user ID, and action performed. [file:1]
+- `users.json` stores user ID, password hash, role, lock status, and failed attempts. 
+- `cases.json` stores case ID, title, status, and assigned officer. 
+- `log.txt` stores timestamp, user ID, and action performed. 
 
 ## Requirements
 
-- Python 3 [file:1]
-- Command-line interface [file:1]
-- No external database; all data stored locally in files. [file:1]
+- Python 3 
+- Command-line interface
+- No external database; all data stored locally in files. 
